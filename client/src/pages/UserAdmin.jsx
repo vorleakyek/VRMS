@@ -33,9 +33,10 @@ const UserAdmin = () => {
   const updateUserActiveStatus = useCallback(
     async (user, isActive) => {
       await userApiService.updateUserDbIsActive(user, isActive);
-      fetchUsers()
-    }, [userApiService, fetchUsers]
-  )
+      fetchUsers();
+    },
+    [userApiService, fetchUsers]
+  );
 
   // Update user's access level (admin/user)
   const updateUserAccessLevel = useCallback(
