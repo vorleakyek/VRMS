@@ -64,9 +64,6 @@ const Navbar = (props) => {
               <StyledButton component={NavLink} to="/users">
                 USERS
               </StyledButton>
-              <StyledButton component={NavLink} to="/useradmin">
-                NewUSERS
-              </StyledButton>
               <StyledButton component={NavLink} to="/projects">
                 PROJECTS
               </StyledButton>

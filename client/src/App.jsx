@@ -49,7 +49,7 @@ const routes = [
   { path: '/events', name: 'events', Component: Events },
   { path: '/users', name: 'users', Component: Users },
 
-  { path: '/useradmin', name: 'useradmin', Component: UserAdmin },
+  { path: '/users/user-search', name: 'useradmin', Component: UserAdmin },
   { path: '/projects', name: 'projects', Component: ProjectList },
   { path: '/projects/create', name: 'projectform', Component: addProject },
   {
