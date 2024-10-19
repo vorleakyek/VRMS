@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@mui/material';
 
 import '../sass/Users.scss';
@@ -8,15 +9,21 @@ const Users = () => {
     <div className="container--users">
       <div className="margin-bottom">
         <Button
+          component={Link}
+          to="/users/user-search"
           className="button"
           variant="contained"
-          onClick={() => console.log('clicked')}
         >
           User Search
         </Button>
       </div>
       <div>
-        <Button className="button" variant="contained">
+        <Button
+          component={Link}
+          to="/users/permission-search"
+          className="button"
+          variant="contained"
+        >
           User Permission Search
         </Button>
       </div>
