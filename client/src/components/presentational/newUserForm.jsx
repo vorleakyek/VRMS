@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const NewUserForm = (props) => {
   return (
@@ -50,14 +50,18 @@ const NewUserForm = (props) => {
                 aria-label="Email Address"
                 required
               />
-              <label htmlFor="email">{"(This allows easy use of the app. We'll never sell your data!)"}</label>
+              <label htmlFor="email">
+                {
+                  "(This allows easy use of the app. We'll never sell your data!)"
+                }
+              </label>
             </div>
           </div>
 
           {props.questions.length !== 0 &&
             props.questions.map((question) => {
               return (
-                question.type === "text" && (
+                question.type === 'text' && (
                   <div key={question._id} className="form-row">
                     <div className="form-input-text">
                       <input
@@ -71,12 +75,14 @@ const NewUserForm = (props) => {
                             ? props.formInput[
                                 question.htmlName.toString()
                               ].toString()
-                            : ""
+                            : ''
                         }
                         onChange={props.handleInputChange}
                         required
                       />
-                      <label htmlFor={question.htmlName}>{question.questionText}</label>
+                      <label htmlFor={question.htmlName}>
+                        {question.questionText}
+                      </label>
                     </div>
                   </div>
                 )
@@ -86,11 +92,11 @@ const NewUserForm = (props) => {
           {props.questions.length !== 0 &&
             props.questions.map((question) => {
               return (
-                question.type === "select" && (
+                question.type === 'select' && (
                   <div key={question._id} className="form-row last-row">
                     <div className="form-input-radio">
                       <label htmlFor={question.htmlName}>
-                        Is this your first time attending a Hack Night?
+                        IS THIS YOUR FIRST TIME ATTENDING A HACK FOR LA MEETING?
                       </label>
                       <div className="radio-buttons first-time-select">
                         <input
@@ -123,7 +129,7 @@ const NewUserForm = (props) => {
             : props.questions.length !== 0 &&
               props.questions.map((question) => {
                 return (
-                  question.htmlName === "attendanceLength" && (
+                  question.htmlName === 'attendanceLength' && (
                     <div key={question._id} className="form-row">
                       <div className="form-input-text">
                         <label htmlFor={question.htmlName}>
@@ -165,9 +171,9 @@ const NewUserForm = (props) => {
                 );
               })}
 
-          {props.isError && props.errorMessage.length > 1 &&
+          {props.isError && props.errorMessage.length > 1 && (
             <div className="error">{props.errorMessage}</div>
-          }
+          )}
 
           {!props.isLoading ? (
             <div className="form-row">
