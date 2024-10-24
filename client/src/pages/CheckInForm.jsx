@@ -50,20 +50,14 @@ const CheckInForm = (props) => {
     'NOV',
     'DEC',
   ];
-  const years = [
-    '2024',
-    '2023',
-    '2022',
-    '2021',
-    '2020',
-    '2019',
-    '2018',
-    '2017',
-    '2016',
-    '2015',
-    '2014',
-    '2013',
-  ];
+  const currentYear = new Date().getFullYear();
+  const startYear = 2013;
+  const years = [];
+
+  for (let year = currentYear; year >= startYear; year--) {
+    years.push(year.toString());
+  }
+
   const reasons = [
     '--SELECT ONE--',
     'Open Data',
