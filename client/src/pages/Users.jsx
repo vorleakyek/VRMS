@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '@mui/material';
+import { Button, Box, Container } from '@mui/material';
 
 import '../sass/Users.scss';
 
 const Users = () => {
   return (
-    <div className="container--users">
-      <div className="margin-bottom">
+    <Container className="container--users">
+      <Box className="margin-bottom center">
         <Button
           component={Link}
           to="/users/user-search"
@@ -16,8 +16,8 @@ const Users = () => {
         >
           User Search
         </Button>
-      </div>
-      <div>
+      </Box>
+      <Box className="center">
         <Button
           component={Link}
           to="/users/permission-search"
@@ -26,8 +26,8 @@ const Users = () => {
         >
           User Permission Search
         </Button>
-      </div>
-    </div>
+      </Box>
+    </Container>
   );
 };
 
