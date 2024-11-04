@@ -6,11 +6,9 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import '../../sass/CheckIn.scss';
 
 const NewUserForm = (props) => {
-  // Initialize month and year with proper Date values
-  const [selectedMonth, setSelectedMonth] = useState(new Date());
-  const [selectedYear, setSelectedYear] = useState(new Date());
-  const minYear = new Date(2013, 0); // Minimum year: 2013
-  const maxYear = new Date(); // Maximum year: current year
+  const [selectedDate, setSelectedDate] = useState(null);
+  const minDate = new Date(2013, 0);
+  const maxDate = new Date();
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -136,7 +134,6 @@ const NewUserForm = (props) => {
                   )
                 );
               })}
-
             {props.newMember === true
               ? null
               : props.questions.length !== 0 &&
@@ -148,83 +145,44 @@ const NewUserForm = (props) => {
                           <label htmlFor={question.htmlName}>
                             {question.questionText}
                           </label>
-                          <div className="date-picker-container">
-                            {/* Month Picker */}
-                            <FormControl
-                              sx={{
-                                minWidth: 150,
-                                '& .MuiOutlinedInput-root': {
-                                  '& fieldset': {
-                                    borderColor: 'black',
-                                    borderWidth: '4.1px',
-                                  },
-                                  '&:hover fieldset': {
-                                    borderColor: 'black',
-                                    borderWidth: '4.1px',
-                                  },
-                                  '&.Mui-focused fieldset': {
-                                    borderColor: 'black',
-                                    borderWidth: '4.1px',
-                                  },
-                                },
-                              }}
-                            >
-                              <DatePicker
-                                views={['month']}
-                                label="Month"
-                                value={selectedMonth}
-                                onChange={(newValue) =>
-                                  setSelectedMonth(newValue)
-                                }
-                                renderInput={(params) => (
-                                  <TextField
-                                    {...params}
-                                    variant="outlined"
-                                    fullWidth
-                                  />
-                                )}
-                              />
-                            </FormControl>
-
-                            {/* Year Picker */}
-                            <FormControl
-                              sx={{
-                                minWidth: 150,
-                                '& .MuiOutlinedInput-root': {
-                                  '& fieldset': {
-                                    borderColor: 'black',
-                                    borderWidth: '4.1px',
-                                  },
-                                  '&:hover fieldset': {
-                                    borderColor: 'black',
-                                    borderWidth: '4.1px',
-                                  },
-                                  '&.Mui-focused fieldset': {
-                                    borderColor: 'black',
-                                    borderWidth: '4.1px',
-                                  },
-                                },
-                              }}
-                            >
-                              <DatePicker
-                                views={['year']}
-                                label="Year"
-                                minDate={minYear}
-                                maxDate={maxYear}
-                                value={selectedYear}
-                                onChange={(newValue) =>
-                                  setSelectedYear(newValue)
-                                }
-                                renderInput={(params) => (
-                                  <TextField
-                                    {...params}
-                                    variant="outlined"
-                                    fullWidth
-                                  />
-                                )}
-                              />
-                            </FormControl>
-                          </div>
+                          <FormControl
+                            sx={{
+                              minWidth: '60%',
+                              margin: '1rem 0',
+                            }}
+                          >
+                            <DatePicker
+                              views={['year', 'month']}
+                              label="Month and Year"
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              value={selectedDate}
+                              onChange={(newValue) => setSelectedDate(newValue)}
+                              inputFormat="MM/yyyy"
+                              renderInput={(params) => (
+                                <TextField
+                                  {...params}
+                                  variant="outlined"
+                                  fullWidth
+                                  sx={{
+                                    '& .MuiOutlinedInput-root': {
+                                      '& fieldset': {
+                                        borderColor: 'black',
+                                        borderWidth: '4px',
+                                      },
+                                      '&:hover fieldset': {
+                                        borderColor: 'black',
+                                      },
+                                      '&.Mui-focused fieldset': {
+                                        borderColor: 'black',
+                                        borderWidth: '4px',
+                                      },
+                                    },
+                                  }}
+                                />
+                              )}
+                            />
+                          </FormControl>
                         </div>
                       </div>
                     )
@@ -241,9 +199,8 @@ const NewUserForm = (props) => {
                   <button
                     type="submit"
                     className="form-check-in-submit"
-                    onClick={(e) =>
-                      props.checkInNewUser(e, selectedMonth, selectedYear)
-                    }
+                    onClick={(e) => props.checkInNewUser(e, selectedDate)}
+                    disabled={!selectedDate}
                   >
                     {props.newMember ? 'CREATE PROFILE' : 'CHECK IN'}
                   </button>

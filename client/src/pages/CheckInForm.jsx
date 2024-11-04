@@ -331,14 +331,12 @@ const CheckInForm = (props) => {
     }
   };*/
   }
-  // The modified checkInNewUser function to accept selectedMonth and selectedYear
-  const checkInNewUser = (e, selectedMonth, selectedYear) => {
+
+  const checkInNewUser = (e, selectedDate) => {
     e.preventDefault();
 
-    // Convert selectedMonth and selectedYear to strings for `firstAttended`
-    // (Modified) This line uses selectedMonth and selectedYear instead of default values
-    const month = selectedMonth.toLocaleString('default', { month: 'long' });
-    const year = selectedYear.getFullYear();
+    const month = selectedDate.toLocaleString('default', { month: 'long' });
+    const year = selectedDate.getFullYear();
     const firstAttended = `${month} ${year}`;
 
     // SET all of the user's info from useState objects
