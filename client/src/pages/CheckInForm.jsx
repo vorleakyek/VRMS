@@ -268,7 +268,8 @@ const CheckInForm = (props) => {
       });
   };
 
-  const checkInNewUser = (e) => {
+  {
+    /*const checkInNewUser = (e) => {
     e.preventDefault();
 
     const firstAttended = `${month} ${year}`;
@@ -319,12 +320,81 @@ const CheckInForm = (props) => {
       }
       // SUBMIT all of the user's info from the userForm object
       if (ready) {
+        console.log('Form data to be submitted:', userForm);
         submitForm(userForm);
       }
 
       setIsLoading(false);
     } catch (error) {
       console.log(error);
+      setIsLoading(false);
+    }
+  };*/
+  }
+  // The modified checkInNewUser function to accept selectedMonth and selectedYear
+  const checkInNewUser = (e, selectedMonth, selectedYear) => {
+    e.preventDefault();
+
+    // Convert selectedMonth and selectedYear to strings for `firstAttended`
+    // (Modified) This line uses selectedMonth and selectedYear instead of default values
+    const month = selectedMonth.toLocaleString('default', { month: 'long' });
+    const year = selectedYear.getFullYear();
+    const firstAttended = `${month} ${year}`;
+
+    // SET all of the user's info from useState objects
+    const userForm = {
+      name: {
+        firstName,
+        lastName,
+      },
+      ...formInput,
+      newMember,
+      firstAttended,
+    };
+
+    let ready = true;
+
+    try {
+      setIsLoading(true);
+
+      if (
+        userForm.name.firstName === '' ||
+        userForm.name.lastName === '' ||
+        userForm.email === '' ||
+        userForm.currentRole === '' ||
+        userForm.desiredRole === '' ||
+        firstAttended === ''
+      ) {
+        setIsError(true);
+        setErrorMessage("Please don't leave any fields blank");
+        ready = false;
+      }
+
+      const currYear = parseInt(moment().format('YYYY'));
+      const currMonth = parseInt(moment().format('MM'));
+      const yearJoined = parseInt(year);
+      const monthJoined = parseInt(moment(month + ' 9, 2020').format('MM'));
+
+      if (
+        yearJoined > currYear ||
+        (yearJoined === currYear && monthJoined > currMonth)
+      ) {
+        setIsError(true);
+        setErrorMessage(
+          "You can't set a date in the future... Please try again."
+        );
+        ready = false;
+      }
+
+      // (Modified) Log the data before submission for debugging
+      if (ready) {
+        console.log('Form data to be submitted:', userForm); // Log userForm data
+        submitForm(userForm); // Submit the data
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log('Error during form submission:', error);
       setIsLoading(false);
     }
   };
