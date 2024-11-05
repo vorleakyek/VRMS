@@ -268,70 +268,6 @@ const CheckInForm = (props) => {
       });
   };
 
-  {
-    /*const checkInNewUser = (e) => {
-    e.preventDefault();
-
-    const firstAttended = `${month} ${year}`;
-
-    // SET all of the user's info from useState objects
-    const userForm = {
-      name: {
-        firstName,
-        lastName,
-      },
-      ...formInput,
-      newMember,
-      firstAttended,
-    };
-
-    let ready = true;
-
-    try {
-      setIsLoading(true);
-
-      if (
-        userForm.name.firstName === '' ||
-        userForm.name.lastName === '' ||
-        userForm.email === '' ||
-        userForm.currentRole === '' ||
-        userForm.desiredRole === '' ||
-        firstAttended === ''
-      ) {
-        setIsError(true);
-        setErrorMessage("Please don't leave any fields blank");
-        ready = false;
-      }
-
-      const currYear = parseInt(moment().format('YYYY'));
-      const currMonth = parseInt(moment().format('MM'));
-      const yearJoined = parseInt(year);
-      // extra date info needed to be recognized as a date
-      const monthJoined = parseInt(moment(month + ' 9, 2020').format('MM'));
-      if (
-        yearJoined > currYear ||
-        (yearJoined === currYear && monthJoined > currMonth)
-      ) {
-        setIsError(true);
-        setErrorMessage(
-          "You can't set a date in the future... Please try again."
-        );
-        ready = false;
-      }
-      // SUBMIT all of the user's info from the userForm object
-      if (ready) {
-        console.log('Form data to be submitted:', userForm);
-        submitForm(userForm);
-      }
-
-      setIsLoading(false);
-    } catch (error) {
-      console.log(error);
-      setIsLoading(false);
-    }
-  };*/
-  }
-
   const checkInNewUser = (e, selectedDate) => {
     e.preventDefault();
 
@@ -384,10 +320,9 @@ const CheckInForm = (props) => {
         ready = false;
       }
 
-      // (Modified) Log the data before submission for debugging
       if (ready) {
-        console.log('Form data to be submitted:', userForm); // Log userForm data
-        submitForm(userForm); // Submit the data
+        console.log('Form data to be submitted:', userForm); // remove after review!!
+        submitForm(userForm);
       }
 
       setIsLoading(false);
