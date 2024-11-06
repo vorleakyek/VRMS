@@ -9,6 +9,10 @@ import '../../sass/CheckIn.scss';
 const NewUserForm = (props) => {
   const [selectedDate, setSelectedDate] = useState(new Date());
 
+
+  console.log(selectedDate) 
+
+  
   const minDate = new Date(2013, 0);
   const maxDate = new Date();
   const handleDateChange = (newValue) => {
