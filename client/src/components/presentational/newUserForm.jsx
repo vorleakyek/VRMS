@@ -3,12 +3,21 @@ import { FormControl, TextField } from '@mui/material';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { format } from 'date-fns';
 import '../../sass/CheckIn.scss';
 
 const NewUserForm = (props) => {
-  const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedDate, setSelectedDate] = useState(new Date());
+
   const minDate = new Date(2013, 0);
   const maxDate = new Date();
+  const handleDateChange = (newValue) => {
+    if (newValue instanceof Date && !isNaN(newValue)) {
+      setSelectedDate(newValue); // Ensure only a valid Date object is set
+    } else {
+      console.error('Invalid date selected:', newValue);
+    }
+  };
 
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -147,7 +156,6 @@ const NewUserForm = (props) => {
                           </label>
                           <FormControl
                             sx={{
-                              minWidth: '60%',
                               margin: '1rem 0',
                             }}
                           >
@@ -157,31 +165,13 @@ const NewUserForm = (props) => {
                               minDate={minDate}
                               maxDate={maxDate}
                               value={selectedDate}
-                              onChange={(newValue) => setSelectedDate(newValue)}
-                              inputFormat="MM/yyyy"
-                              renderInput={(params) => (
-                                <TextField
-                                  {...params}
-                                  variant="outlined"
-                                  fullWidth
-                                  sx={{
-                                    '& .MuiOutlinedInput-root': {
-                                      '& fieldset': {
-                                        borderColor: 'black',
-                                        borderWidth: '4px',
-                                      },
-                                      '&:hover fieldset': {
-                                        borderColor: 'black',
-                                      },
-                                      '&.Mui-focused fieldset': {
-                                        borderColor: 'black',
-                                        borderWidth: '4px',
-                                      },
-                                    },
-                                  }}
-                                />
+                              onChange={handleDateChange}
+                              inputFormat="MMM yyyy"
+                            >
+                              {(params) => (
+                                <TextField {...params} variant="standard" />
                               )}
-                            />
+                            </DatePicker>
                           </FormControl>
                         </div>
                       </div>

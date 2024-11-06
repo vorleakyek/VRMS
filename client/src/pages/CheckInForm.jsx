@@ -3,6 +3,7 @@ import moment from 'moment';
 import NewUserForm from './../components/presentational/newUserForm';
 import ReturnUserForm from './../components/presentational/returnUserForm';
 import { REACT_APP_CUSTOM_REQUEST_HEADER as headerToSend } from '../utils/globalSettings';
+import { format } from 'date-fns';
 
 import '../sass/CheckIn.scss';
 
@@ -271,9 +272,7 @@ const CheckInForm = (props) => {
   const checkInNewUser = (e, selectedDate) => {
     e.preventDefault();
 
-    const month = selectedDate.toLocaleString('default', { month: 'long' });
-    const year = selectedDate.getFullYear();
-    const firstAttended = `${month} ${year}`;
+    const firstAttended = format(selectedDate, 'MMM yyyy').toUpperCase();
 
     // SET all of the user's info from useState objects
     const userForm = {
