@@ -173,7 +173,19 @@ const NewUserForm = (props) => {
                                 value={selectedDate}
                                 onChange={handleDateChange}
                                 inputFormat="MMM yyyy"
-                                sx={{ width: '100%' }}
+                                sx={{
+                                  width: '100%',
+                                  maxWidth: '300px',
+                                  borderBottom: 'none',
+                                  '& input[type=text]': {
+                                      height: '40px',
+                                      width: '100%',
+                                      borderBottom: 'none',
+                                      paddingLeft: '0.5rem',
+                                      color: 'rgb(250, 17, 79)',
+                                      fontWeight: '600', // semi-bold
+                                    },
+                                }}
                               >
                                 {(params) => (
                                   <TextField {...params} variant="outlined" />
