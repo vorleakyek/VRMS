@@ -154,25 +154,29 @@ const NewUserForm = (props) => {
                           <label htmlFor={question.htmlName}>
                             {question.questionText}
                           </label>
-                          <FormControl
-                            sx={{
-                              margin: '1rem 0',
-                            }}
-                          >
-                            <DatePicker
-                              views={['year', 'month']}
-                              label="Month and Year"
-                              minDate={minDate}
-                              maxDate={maxDate}
-                              value={selectedDate}
-                              onChange={handleDateChange}
-                              inputFormat="MMM yyyy"
+                          <div className="datepicker-container">
+                            <FormControl
+                              sx={{
+                                margin: '1rem 0',
+                                width: '100%',
+                              }}
                             >
-                              {(params) => (
-                                <TextField {...params} variant="standard" />
-                              )}
-                            </DatePicker>
-                          </FormControl>
+                              <DatePicker
+                                views={['year', 'month']}
+                                label="Month and Year"
+                                minDate={minDate}
+                                maxDate={maxDate}
+                                value={selectedDate}
+                                onChange={handleDateChange}
+                                inputFormat="MMM yyyy"
+                                sx={{ width: '100%' }}
+                              >
+                                {(params) => (
+                                  <TextField {...params} variant="outlined" />
+                                )}
+                              </DatePicker>
+                            </FormControl>
+                          </div>
                         </div>
                       </div>
                     )

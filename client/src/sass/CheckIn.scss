@@ -200,13 +200,15 @@ select {
   pointer-events: none;
   opacity: 0.4;
 }
-.date-picker-container {
-  display: flex;
-  justify-content: space-around;
-  gap: 10px;
-  margin-top: 20px;
+.datepicker-container {
+  width: 100%;
+  max-width: 300px;
 }
-
-.MuiPickersCalendarHeader-labelContainer {
-  display: none !important;
+.datepicker-container input[type='text'] {
+  height: 40px;
+  width: 100%;
+  border-bottom: none;
+  padding-left: 0.5rem;
+  color: red;
+  font-weight: semi-bold;
 }
