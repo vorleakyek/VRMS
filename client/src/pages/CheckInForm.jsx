@@ -320,7 +320,6 @@ const CheckInForm = (props) => {
       }
 
       if (ready) {
-        console.log('Form data to be submitted:', userForm); // remove after review!!
         submitForm(userForm);
       }
 
