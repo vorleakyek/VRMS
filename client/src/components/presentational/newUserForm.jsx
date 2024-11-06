@@ -158,45 +158,43 @@ const NewUserForm = (props) => {
                           <label htmlFor={question.htmlName}>
                             {question.questionText}
                           </label>
-                          <div className="datepicker-container">
-                            <FormControl
+                          <FormControl
+                            sx={{
+                              margin: '1rem 0',
+                              width: '100%',
+                            }}
+                          >
+                            <DatePicker
+                              views={['year', 'month']}
+                              label="Month and Year"
+                              minDate={minDate}
+                              maxDate={maxDate}
+                              value={selectedDate}
+                              onChange={handleDateChange}
+                              inputFormat="MMM yyyy"
+                              localeText={{
+                                fieldMonthPlaceholder: () => 'Month',
+                                fieldYearPlaceholder: () => 'Year',
+                              }}
                               sx={{
-                                margin: '1rem 0',
                                 width: '100%',
+                                maxWidth: '300px',
+                                borderBottom: 'none',
+                                '& input[type=text]': {
+                                    height: '40px',
+                                    width: '100%',
+                                    borderBottom: 'none',
+                                    paddingLeft: '0.5rem',
+                                    color: 'rgb(250, 17, 79)',
+                                    fontWeight: '600', // semi-bold
+                                  },
                               }}
                             >
-                              <DatePicker
-                                views={['year', 'month']}
-                                label="Month and Year"
-                                minDate={minDate}
-                                maxDate={maxDate}
-                                value={selectedDate}
-                                onChange={handleDateChange}
-                                inputFormat="MMM yyyy"
-                                localeText={{
-                                  fieldMonthPlaceholder: () => 'Month',
-                                  fieldYearPlaceholder: () => 'Year',
-                                }}
-                                sx={{
-                                  width: '100%',
-                                  maxWidth: '300px',
-                                  borderBottom: 'none',
-                                  '& input[type=text]': {
-                                      height: '40px',
-                                      width: '100%',
-                                      borderBottom: 'none',
-                                      paddingLeft: '0.5rem',
-                                      color: 'rgb(250, 17, 79)',
-                                      fontWeight: '600', // semi-bold
-                                    },
-                                }}
-                              >
-                                {(params) => (
-                                  <TextField {...params} variant="outlined" />
-                                )}
-                              </DatePicker>
-                            </FormControl>
-                          </div>
+                              {(params) => (
+                                <TextField {...params} variant="outlined" />
+                              )}
+                            </DatePicker>
+                          </FormControl>
                         </div>
                       </div>
                     )
