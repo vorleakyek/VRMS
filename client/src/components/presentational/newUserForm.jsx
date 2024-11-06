@@ -173,6 +173,10 @@ const NewUserForm = (props) => {
                                 value={selectedDate}
                                 onChange={handleDateChange}
                                 inputFormat="MMM yyyy"
+                                localeText={{
+                                  fieldMonthPlaceholder: () => 'Month',
+                                  fieldYearPlaceholder: () => 'Year',
+                                }}
                                 sx={{
                                   width: '100%',
                                   maxWidth: '300px',
