@@ -26,6 +26,8 @@ import addProject from './components/manageProjects/addProject';
 import HealthCheck from './pages/HealthCheck';
 import SecretPassword from './pages/SecretPassword';
 import UserWelcome from './pages/UserWelcome';
+// Added User Permission Search component
+import UserPermissionSearch from './pages/UserPermissionSearch';
 
 import { ThemeProvider } from '@mui/material';
 import theme from './theme';
@@ -50,6 +52,12 @@ const routes = [
   { path: '/users', name: 'users', Component: Users },
 
   { path: '/users/user-search', name: 'useradmin', Component: UserAdmin },
+  // Added User Permission Search component
+  {
+    path: '/users/permission-search',
+    name: 'useradmin',
+    Component: UserPermissionSearch,
+  },
   { path: '/projects', name: 'projects', Component: ProjectList },
   { path: '/projects/create', name: 'projectform', Component: addProject },
   {
