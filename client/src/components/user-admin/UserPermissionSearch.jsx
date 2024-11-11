@@ -268,6 +268,7 @@ const UserPermissionSearch = ({ users, setUserToEdit }) => {
       filteredData = [...tempFilter];
     }
   } else {
+    // NOTE: Using "users" instead of "dummyData" to check the link to user profile
     filteredData = getFilteredData(users, searchText, userType);
   }
 
