@@ -18,6 +18,7 @@ import HandleAuth from './components/auth/HandleAuth';
 import EmailSent from './pages/EmailSent';
 import Events from './pages/Events';
 import ProjectLeaderDashboard from './pages/ProjectLeaderDashboard';
+import Users from './pages/Users';
 import UserAdmin from './pages/UserAdmin';
 import ProjectList from './pages/ProjectList';
 import ManageProjects from './pages/ManageProjects';
@@ -46,9 +47,11 @@ const routes = [
   { path: '/handleauth', name: 'handleauth', Component: HandleAuth },
   { path: '/emailsent', name: 'emailsent', Component: EmailSent },
   { path: '/events', name: 'events', Component: Events },
-  { path: '/useradmin', name: 'useradmin', Component: UserAdmin },
+  { path: '/users', name: 'users', Component: Users },
+
+  { path: '/users/user-search', name: 'useradmin', Component: UserAdmin },
   { path: '/projects', name: 'projects', Component: ProjectList },
-  { path: '/projects/create', name: 'projectform', Component:  addProject},
+  { path: '/projects/create', name: 'projectform', Component: addProject },
   {
     path: '/projects/:projectId',
     name: 'project',
